@@ -1,0 +1,10 @@
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll.config
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\Sprzedane.pdb
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.dll
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.dll
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.xml
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.xml
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
+J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb

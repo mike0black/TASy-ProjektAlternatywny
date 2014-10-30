@@ -1,0 +1,6 @@
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll.config
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.pdb
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.csprojResolveAssemblyReference.cache
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.dll
+J:\TASy\Projekt alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.pdb
