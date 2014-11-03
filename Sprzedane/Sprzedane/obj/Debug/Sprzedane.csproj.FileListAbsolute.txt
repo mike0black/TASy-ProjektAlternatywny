@@ -8,3 +8,13 @@ J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.xml
 J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.xml
 J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
 J:\TASy\Projekt alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll.config
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.pdb
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.dll
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.dll
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.xml
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.xml
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
+D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb
