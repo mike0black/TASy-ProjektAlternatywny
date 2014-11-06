@@ -14,8 +14,8 @@ namespace Sprzedane
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            //RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(),
-            //typeof(SprzedaneService)));
+            RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(),
+            typeof(SprzedaneService)));
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -25,9 +25,9 @@ namespace Sprzedane
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            //HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //HttpContext.Current.Response.Cache.SetNoStore();
-            //HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Current.Response.Cache.SetNoStore();
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
