@@ -26,7 +26,7 @@
                     response( $.map( data, function( item ) {
                         return {
                             label: item.Nazwa,
-                            value: item.Kategoria
+                            value: item.Nazwa + ", Kategoria: " + item.Kategoria + " Cena: " + item.Cena + "zł"
                         }
                     }));
                 },

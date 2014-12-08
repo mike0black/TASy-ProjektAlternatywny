@@ -15,14 +15,14 @@ namespace SprzedaneWebMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Tu powinien być opis projektu - Ale nie ma";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Nasze dane kontaktowe";
 
             return View();
         }
