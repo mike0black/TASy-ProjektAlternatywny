@@ -105,11 +105,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <EntityDeploy Include="SprzedaneModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SprzedaneModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="packages.config" />
     <Content Include="SprzedaneModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SprzedaneModel.edmx</DependentUpon>

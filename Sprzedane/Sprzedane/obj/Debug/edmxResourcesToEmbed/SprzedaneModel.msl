@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SprzedaneModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
     <EntitySetMapping Name="Przedmioties">
-      <EntityTypeMapping TypeName="SprzedaneModel.Przedmioties">
+      <EntityTypeMapping TypeName="Model.Przedmioties">
         <MappingFragment StoreEntitySet="Przedmioties">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
