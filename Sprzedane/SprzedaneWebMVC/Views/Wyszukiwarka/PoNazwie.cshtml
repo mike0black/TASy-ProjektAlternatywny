@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Wyszukiwanie po nazwie";
+}
+
+<h2>Wyszukiwanie przedmiotów po nazwie</h2>
+
+<ul>
+    @foreach (SprzedaneWebMVC.SprzedaneReference.Przedmioty wynik in ViewBag.Lista)
+    {
+        <li>@wynik.Nazwa, Kategoria: @wynik.Kategoria, Cena: @wynik.Cena zł </li>
+    }
+</ul>
+
