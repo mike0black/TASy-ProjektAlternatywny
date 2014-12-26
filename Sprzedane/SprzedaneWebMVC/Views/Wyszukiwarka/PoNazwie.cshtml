@@ -9,7 +9,7 @@
 <h2>Wyszukiwanie przedmiotów po nazwie</h2>
 
 <ul>
-    @foreach (SprzedaneWebMVC.SprzedaneReference.Przedmioty wynik in ViewBag.Lista)
+    @foreach (SprzedaneWebMVC.Models.Przedmiot wynik in ViewBag.Lista)
     {
         <li>@wynik.Nazwa, Kategoria: @wynik.Kategoria, Cena: @wynik.Cena zł </li>
     }
