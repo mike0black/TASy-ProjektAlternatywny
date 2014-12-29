@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SprzedaneWebMVC.Models
 {
@@ -47,7 +48,13 @@ namespace SprzedaneWebMVC.Models
     {
         [Required]
         [Display(Name = "User name")]
+        [StringLength(50)]
         public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Invalid E-mail Address")]
+        [Display(Name = "E-mail Address")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -59,5 +66,30 @@ namespace SprzedaneWebMVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
+        public string Imie { get; set; }
+
+        [Required]
+        [Display(Name = "Surname")]
+        public string Nazwisko { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Adres { get; set; }
+
+        [Required]
+        [Display(Name = "Zip code")]
+        public string KodPocztowy { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        public string Miasto { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Birthdate")]
+        public DateTime DataUrodzenia { get; set; }
     }
 }

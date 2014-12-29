@@ -78,7 +78,17 @@ namespace SprzedaneWebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser()
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    Imie = model.Imie,
+                    Nazwisko = model.Nazwisko,
+                    Adres = model.Adres,
+                    KodPocztowy = model.KodPocztowy,
+                    Miasto = model.Miasto,
+                    DataUrodzenia = model.DataUrodzenia
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
