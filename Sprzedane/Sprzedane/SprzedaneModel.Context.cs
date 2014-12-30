@@ -25,6 +25,7 @@ namespace Sprzedane
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Przedmioties> Przedmioties { get; set; }
     }
 }

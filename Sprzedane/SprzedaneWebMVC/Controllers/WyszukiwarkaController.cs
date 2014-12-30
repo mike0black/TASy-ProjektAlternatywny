@@ -29,7 +29,8 @@ namespace SprzedaneWebMVC.Controllers
             using (WebClient webClient = new WebClient())
             {
                 string dwml;
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + name);
+                string ResourceUri = SprzedaneServiceUri + "przedmioty/" + name;
+                dwml = webClient.DownloadString(ResourceUri);
                 Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
             }
 

@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Imie" Type="nvarchar(max)" />
+    <Property Name="Nazwisko" Type="nvarchar(max)" />
+    <Property Name="Adres" Type="nvarchar(max)" />
+    <Property Name="KodPocztowy" Type="nvarchar(max)" />
+    <Property Name="Miasto" Type="nvarchar(max)" />
+    <Property Name="DataUrodzenia" Type="datetime" />
+  </EntityType>
   <EntityType Name="Przedmioties">
     <Key>
       <PropertyRef Name="ID" />
@@ -9,9 +26,26 @@
     <Property Name="Kategoria" Type="nvarchar(max)" />
     <Property Name="Cena" Type="float" Nullable="false" />
     <Property Name="DataZakonczenia" Type="datetime" Nullable="false" />
-    <Property Name="Wystawiajacy" Type="nvarchar(max)" />
+    <Property Name="WystawiajacyId" Type="nvarchar" MaxLength="128" />
   </EntityType>
+  <Association Name="WystawiajacyId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Przedmioties" Type="Self.Przedmioties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Przedmioties">
+        <PropertyRef Name="WystawiajacyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="WystawiajacyId" Association="Self.WystawiajacyId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Przedmioties" EntitySet="Przedmioties" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="Model.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+          <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+          <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Przedmioties">
       <EntityTypeMapping TypeName="Model.Przedmioties">
         <MappingFragment StoreEntitySet="Przedmioties">
@@ -9,7 +27,7 @@
           <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
           <ScalarProperty Name="Cena" ColumnName="Cena" />
           <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
-          <ScalarProperty Name="Wystawiajacy" ColumnName="Wystawiajacy" />
+          <ScalarProperty Name="WystawiajacyId" ColumnName="WystawiajacyId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

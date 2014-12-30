@@ -19,7 +19,7 @@ namespace Sprzedane
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
                                  where p.Nazwa.ToLower().Contains(term.ToLower())
                                  select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
-                                     DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy }).ToList();
+                                     DataZakonczenia = p.DataZakonczenia, WystawiajacyId = p.WystawiajacyId }).ToList();
             return ListaPrzedmiotow;
         }
     }

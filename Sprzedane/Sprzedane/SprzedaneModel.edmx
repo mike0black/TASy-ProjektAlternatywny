@@ -4,7 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Imie" Type="nvarchar(max)" />
+          <Property Name="Nazwisko" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="KodPocztowy" Type="nvarchar(max)" />
+          <Property Name="Miasto" Type="nvarchar(max)" />
+          <Property Name="DataUrodzenia" Type="datetime" />
+        </EntityType>
         <EntityType Name="Przedmioties">
           <Key>
             <PropertyRef Name="ID" />
@@ -14,15 +31,51 @@
           <Property Name="Kategoria" Type="nvarchar(max)" />
           <Property Name="Cena" Type="float" Nullable="false" />
           <Property Name="DataZakonczenia" Type="datetime" Nullable="false" />
-          <Property Name="Wystawiajacy" Type="nvarchar(max)" />
+          <Property Name="WystawiajacyId" Type="nvarchar" MaxLength="128" />
         </EntityType>
+        <Association Name="WystawiajacyId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Przedmioties" Type="Self.Przedmioties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Przedmioties">
+              <PropertyRef Name="WystawiajacyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="WystawiajacyId" Association="Self.WystawiajacyId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Przedmioties" EntitySet="Przedmioties" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataUrodzenia" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Przedmioties" Relationship="Self.WystawiajacyId" FromRole="AspNetUsers" ToRole="Przedmioties" />
+        </EntityType>
         <EntityType Name="Przedmioties">
           <Key>
             <PropertyRef Name="ID" />
@@ -32,10 +85,28 @@
           <Property Name="Kategoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Cena" Type="Double" Nullable="false" />
           <Property Name="DataZakonczenia" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Wystawiajacy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WystawiajacyId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.WystawiajacyId" FromRole="Przedmioties" ToRole="AspNetUsers" />
         </EntityType>
+        <Association Name="WystawiajacyId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Przedmioties" Type="Self.Przedmioties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Przedmioties">
+              <PropertyRef Name="WystawiajacyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SprzedaneEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" />
+          <AssociationSet Name="WystawiajacyId" Association="Self.WystawiajacyId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Przedmioties" EntitySet="Przedmioties" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -43,6 +114,24 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Przedmioties">
             <EntityTypeMapping TypeName="Model.Przedmioties">
               <MappingFragment StoreEntitySet="Przedmioties">
@@ -51,7 +140,7 @@
                 <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
-                <ScalarProperty Name="Wystawiajacy" ColumnName="Wystawiajacy" />
+                <ScalarProperty Name="WystawiajacyId" ColumnName="WystawiajacyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -70,7 +159,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
