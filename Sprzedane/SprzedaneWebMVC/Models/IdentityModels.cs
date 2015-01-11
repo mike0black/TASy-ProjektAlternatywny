@@ -13,14 +13,17 @@ namespace SprzedaneWebMVC.Models
         public string Adres { get; set; }
         public string KodPocztowy { get; set; }
         public string Miasto { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DataUrodzenia { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext//<ApplicationUser> ///POTENCJALNE BUBLE !!!!!!!
     {
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
         }
+        
+        public System.Data.Entity.DbSet<SprzedaneWebMVC.Models.ApplicationUser> IdentityUsers { get; set; }
     }
 }
