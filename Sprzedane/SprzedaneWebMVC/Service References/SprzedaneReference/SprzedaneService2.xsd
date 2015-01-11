@@ -18,4 +18,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Przedmioty" nillable="true" type="tns:Przedmioty" />
+  <xs:complexType name="Portfele">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" type="xs:int" />
+      <xs:element minOccurs="0" name="Saldo" type="xs:float" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Portfele" nillable="true" type="tns:Portfele" />
 </xs:schema>

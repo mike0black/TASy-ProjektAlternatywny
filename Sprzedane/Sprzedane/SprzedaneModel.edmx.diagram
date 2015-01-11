@@ -7,6 +7,8 @@
       <Diagram DiagramId="c74e7e605ef7474098e61fa800a1c900" Name="Diagram1">
         <EntityTypeShape EntityType="SprzedaneModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SprzedaneModel.Przedmioties" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprzedaneModel.MoneyAccounts" Width="1.5" PointX="4.625" PointY="2.375" />
+        <AssociationConnector Association="SprzedaneModel.UserForeign" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

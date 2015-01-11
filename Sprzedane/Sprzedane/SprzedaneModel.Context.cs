@@ -27,5 +27,6 @@ namespace Sprzedane
     
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Przedmioties> Przedmioties { get; set; }
+        public virtual DbSet<MoneyAccounts> MoneyAccounts { get; set; }
     }
 }

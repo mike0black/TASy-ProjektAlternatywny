@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Detale";
-    SprzedaneWebMVC.Models.Przedmiot item = ViewBag.Przedmiot;
 }
 
 <h2>Detale</h2>
@@ -16,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.Nazwa)
+            @Html.DisplayFor(model => model.Nazwa)
         </dd>
 
         <dt>
@@ -24,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.Kategoria)
+            @Html.DisplayFor(model => model.Kategoria)
         </dd>
 
         <dt>
@@ -32,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.Cena)
+            @Html.DisplayFor(model => model.Cena)
         </dd>
 
         <dt>
@@ -40,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.DataZakonczenia)
+            @Html.DisplayFor(model => model.DataZakonczenia)
         </dd>
 
         <dt>
@@ -48,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.Wystawiajacy)
+            @Html.DisplayFor(model => model.Wystawiajacy)
         </dd>
 
         <dt>
@@ -56,12 +55,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => item.Wygrywajacy)
+            @Html.DisplayFor(model => model.Wygrywajacy)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edytuj", new { id = item.ID }) |
+    @Html.ActionLink("Edit", "Edytuj", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

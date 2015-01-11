@@ -17,6 +17,14 @@
     <Property Name="Miasto" Type="nvarchar(max)" />
     <Property Name="DataUrodzenia" Type="datetime" />
   </EntityType>
+  <EntityType Name="MoneyAccounts">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Saldo" Type="float" />
+  </EntityType>
   <EntityType Name="Przedmioties">
     <Key>
       <PropertyRef Name="ID" />
@@ -29,6 +37,18 @@
     <Property Name="Wystawiajacy" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Wygrywajacy" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="UserForeign">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="MoneyAccounts" Type="Self.MoneyAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MoneyAccounts">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <!--Errors Found During Generation:
 warning 6035: The relationship 'WygrywajacyForeign' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="WygrywajacyForeign" />-->
@@ -37,6 +57,11 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
         <Association Name="WystawiajacyForeign" />-->
   <EntityContainer Name="SprzedaneModelStoreContainer">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MoneyAccounts" EntityType="Self.MoneyAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="UserForeign" Association="Self.UserForeign">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="MoneyAccounts" EntitySet="MoneyAccounts" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

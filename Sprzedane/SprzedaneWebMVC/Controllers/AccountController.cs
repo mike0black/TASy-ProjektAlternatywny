@@ -9,12 +9,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using SprzedaneWebMVC.Models;
+using System.Net;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace SprzedaneWebMVC.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        readonly string SprzedaneServiceUri = "http://localhost:1622/SprzedaneService.svc/";
+        
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -93,6 +98,17 @@ namespace SprzedaneWebMVC.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+                    ///
+                    Portfel p = new Portfel() { UserID = User.Identity.GetUserId() };
+                    using (WebClient webClient = new WebClient())
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Portfel));
+                        serializerToUplaod.WriteObject(ms, p);
+                        webClient.Headers["Content-type"] = "application/json";
+                        webClient.UploadData(SprzedaneServiceUri + "portfele/add", "POST", ms.ToArray());
+                    }
+                    ///
                     return RedirectToAction("Index", "Home");
                 }
                 else

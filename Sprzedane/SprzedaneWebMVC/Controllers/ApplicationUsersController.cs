@@ -8,11 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using SprzedaneWebMVC.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 
 namespace SprzedaneWebMVC.Controllers
 {
     public class ApplicationUsersController : Controller
     {
+        readonly string SprzedaneServiceUri = "http://localhost:1622/SprzedaneService.svc/";
+        
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplicationUsers
@@ -110,9 +115,26 @@ namespace SprzedaneWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            ///
+            using (WebClient webClient = new WebClient())
+            {
+                string dwml;
+                Portfel p = new Portfel();
+                dwml = webClient.DownloadString(SprzedaneServiceUri + "portfele/" + id);
+                p = JsonConvert.DeserializeObjectAsync<Portfel>(dwml).Result;
+                
+                MemoryStream ms2 = new MemoryStream();
+                DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Portfel));
+                serializerToUplaod.WriteObject(ms2, p);
+                webClient.Headers["Content-type"] = "application/json";
+                webClient.UploadData(SprzedaneServiceUri + "portfele/delete", "DELETE", ms2.ToArray());
+            }
+            ///
+            
             ApplicationUser applicationUser = db.IdentityUsers.Find(id);
             db.IdentityUsers.Remove(applicationUser);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

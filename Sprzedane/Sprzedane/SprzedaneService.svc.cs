@@ -74,5 +74,47 @@ namespace Sprzedane
                 "Where ID = @p.ID", p.ID, p.Nazwa, p.Kategoria, p.Cena, p.DataZakonczenia, p.Wystawiajacy, p.Wygrywajacy);
             dc.SaveChanges();
         }
+
+        public Portfele GetPortfel(string id)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            Portfele portfel = (Portfele)(from p in dc.MoneyAccounts where p.UserID == id
+                select new Portfele() { AccountID = p.AccountID, UserID = p.UserID, Saldo = (float)p.Saldo });
+            return portfel;
+        }
+
+        public void AddPortfel(Portfele p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            var portfel = new MoneyAccounts
+            {
+                UserID = p.UserID,
+                Saldo = (float)0.00
+            };
+            dc.MoneyAccounts.Add(portfel);
+            dc.SaveChanges();
+        }
+
+        public void DeletePortfel(Portfele p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            var portfel = new MoneyAccounts
+            {
+                AccountID = p.AccountID,
+                UserID = p.UserID,
+                Saldo = p.Saldo
+            };
+            dc.MoneyAccounts.Remove(portfel);
+            dc.SaveChanges();
+        }
+
+        public void SetSaldo(Portfele p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            dc.MoneyAccounts.SqlQuery("Update dbo.Przedmioties " +
+                "Set Saldo = @p.Saldo Where UserID = @p.UserID", p.Saldo, p.UserID);
+            dc.SaveChanges();
+
+        }
     }
 }

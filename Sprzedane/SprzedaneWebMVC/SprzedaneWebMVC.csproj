@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\AukcjeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PortfelController.cs" />
     <Compile Include="Controllers\PrzedmiotyController.cs" />
     <Compile Include="Controllers\WyszukiwarkaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,6 +172,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Portfel.cs" />
     <Compile Include="Models\Przedmiot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\SprzedaneReference\Reference.cs">
@@ -258,10 +260,14 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Service References\SprzedaneReference\SprzedaneWebMVC.SprzedaneReference.Portfele.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Aukcje\" />
+    <Folder Include="Views\Portfel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -16,6 +16,7 @@
     <Property Name="KodPocztowy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DataUrodzenia" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MoneyAccounts" Relationship="SprzedaneModel.UserForeign" FromRole="AspNetUsers" ToRole="MoneyAccounts" />
   </EntityType>
   <EntityType Name="Przedmioties">
     <Key>
@@ -32,5 +33,31 @@
   <EntityContainer Name="SprzedaneEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
     <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" />
+    <EntitySet Name="MoneyAccounts" EntityType="SprzedaneModel.MoneyAccounts" />
+    <AssociationSet Name="UserForeign" Association="SprzedaneModel.UserForeign">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="MoneyAccounts" EntitySet="MoneyAccounts" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="MoneyAccounts">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Saldo" Type="Double" />
+    <NavigationProperty Name="AspNetUsers" Relationship="SprzedaneModel.UserForeign" FromRole="MoneyAccounts" ToRole="AspNetUsers" />
+  </EntityType>
+  <Association Name="UserForeign">
+    <End Type="SprzedaneModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="SprzedaneModel.MoneyAccounts" Role="MoneyAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MoneyAccounts">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

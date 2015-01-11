@@ -67,13 +67,16 @@ namespace SprzedaneWebMVC.Controllers
                 dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
                 Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
             }
+            //Przedmiot p = (Przedmiot)(from przedmiot in Lista where przedmiot.ID == id
+            //    select new Przedmiot() { ID =  przedmiot.ID, Nazwa = przedmiot.Nazwa, Kategoria = przedmiot.Kategoria,
+            //    Cena = przedmiot.Cena, DataZakonczenia = przedmiot.DataZakonczenia,
+            //    Wystawiajacy = przedmiot.Wystawiajacy, Wygrywajacy = przedmiot.Wygrywajacy });
             foreach (Przedmiot item in Lista)
             {
-                if (item.ID==id) p = item;
+                if (item.ID == id) p = item;
             }
-            ViewBag.Przedmiot = p;
 
-            return View();
+            return View(p);
         }
 
         public ActionResult Dodaj()

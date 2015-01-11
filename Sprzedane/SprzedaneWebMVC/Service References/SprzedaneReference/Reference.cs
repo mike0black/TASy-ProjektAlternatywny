@@ -154,6 +154,83 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Portfele", Namespace="http://schemas.datacontract.org/2004/07/Sprzedane")]
+    [System.SerializableAttribute()]
+    public partial class Portfele : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccountIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float SaldoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccountID {
+            get {
+                return this.AccountIDField;
+            }
+            set {
+                if ((this.AccountIDField.Equals(value) != true)) {
+                    this.AccountIDField = value;
+                    this.RaisePropertyChanged("AccountID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Saldo {
+            get {
+                return this.SaldoField;
+            }
+            set {
+                if ((this.SaldoField.Equals(value) != true)) {
+                    this.SaldoField = value;
+                    this.RaisePropertyChanged("Saldo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIDField, value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SprzedaneReference.ISprzedaneService")]
     public interface ISprzedaneService {
@@ -187,6 +264,30 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/EditPrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/EditPrzedmiotResponse")]
         System.Threading.Tasks.Task EditPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/GetPortfel", ReplyAction="http://tempuri.org/ISprzedaneService/GetPortfelResponse")]
+        SprzedaneWebMVC.SprzedaneReference.Portfele GetPortfel(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/GetPortfel", ReplyAction="http://tempuri.org/ISprzedaneService/GetPortfelResponse")]
+        System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Portfele> GetPortfelAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/AddPortfel", ReplyAction="http://tempuri.org/ISprzedaneService/AddPortfelResponse")]
+        void AddPortfel(SprzedaneWebMVC.SprzedaneReference.Portfele p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/AddPortfel", ReplyAction="http://tempuri.org/ISprzedaneService/AddPortfelResponse")]
+        System.Threading.Tasks.Task AddPortfelAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/DeletePortfel", ReplyAction="http://tempuri.org/ISprzedaneService/DeletePortfelResponse")]
+        void DeletePortfel(SprzedaneWebMVC.SprzedaneReference.Portfele p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/DeletePortfel", ReplyAction="http://tempuri.org/ISprzedaneService/DeletePortfelResponse")]
+        System.Threading.Tasks.Task DeletePortfelAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/SetSaldo", ReplyAction="http://tempuri.org/ISprzedaneService/SetSaldoResponse")]
+        void SetSaldo(SprzedaneWebMVC.SprzedaneReference.Portfele p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/SetSaldo", ReplyAction="http://tempuri.org/ISprzedaneService/SetSaldoResponse")]
+        System.Threading.Tasks.Task SetSaldoAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -254,6 +355,38 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         
         public System.Threading.Tasks.Task EditPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
             return base.Channel.EditPrzedmiotAsync(p);
+        }
+        
+        public SprzedaneWebMVC.SprzedaneReference.Portfele GetPortfel(string id) {
+            return base.Channel.GetPortfel(id);
+        }
+        
+        public System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Portfele> GetPortfelAsync(string id) {
+            return base.Channel.GetPortfelAsync(id);
+        }
+        
+        public void AddPortfel(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            base.Channel.AddPortfel(p);
+        }
+        
+        public System.Threading.Tasks.Task AddPortfelAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            return base.Channel.AddPortfelAsync(p);
+        }
+        
+        public void DeletePortfel(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            base.Channel.DeletePortfel(p);
+        }
+        
+        public System.Threading.Tasks.Task DeletePortfelAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            return base.Channel.DeletePortfelAsync(p);
+        }
+        
+        public void SetSaldo(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            base.Channel.SetSaldo(p);
+        }
+        
+        public System.Threading.Tasks.Task SetSaldoAsync(SprzedaneWebMVC.SprzedaneReference.Portfele p) {
+            return base.Channel.SetSaldoAsync(p);
         }
     }
 }

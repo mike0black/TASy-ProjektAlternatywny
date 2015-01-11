@@ -22,6 +22,14 @@
           <Property Name="Miasto" Type="nvarchar(max)" />
           <Property Name="DataUrodzenia" Type="datetime" />
         </EntityType>
+        <EntityType Name="MoneyAccounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Saldo" Type="float" />
+        </EntityType>
         <EntityType Name="Przedmioties">
           <Key>
             <PropertyRef Name="ID" />
@@ -34,6 +42,18 @@
           <Property Name="Wystawiajacy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Wygrywajacy" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="UserForeign">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="MoneyAccounts" Type="Self.MoneyAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyAccounts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'WygrywajacyForeign' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="WygrywajacyForeign" />-->
@@ -42,7 +62,12 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
         <Association Name="WystawiajacyForeign" />-->
         <EntityContainer Name="SprzedaneModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoneyAccounts" EntityType="Self.MoneyAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="UserForeign" Association="Self.UserForeign">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MoneyAccounts" EntitySet="MoneyAccounts" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -64,6 +89,7 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
           <Property Name="KodPocztowy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DataUrodzenia" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MoneyAccounts" Relationship="SprzedaneModel.UserForeign" FromRole="AspNetUsers" ToRole="MoneyAccounts" />
         </EntityType>
         <EntityType Name="Przedmioties">
           <Key>
@@ -80,7 +106,33 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
         <EntityContainer Name="SprzedaneEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Przedmioties" EntityType="Self.Przedmioties" />
+          <EntitySet Name="MoneyAccounts" EntityType="SprzedaneModel.MoneyAccounts" />
+          <AssociationSet Name="UserForeign" Association="SprzedaneModel.UserForeign">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MoneyAccounts" EntitySet="MoneyAccounts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MoneyAccounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Saldo" Type="Double" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SprzedaneModel.UserForeign" FromRole="MoneyAccounts" ToRole="AspNetUsers" />
+        </EntityType>
+        <Association Name="UserForeign">
+          <End Type="SprzedaneModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="SprzedaneModel.MoneyAccounts" Role="MoneyAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyAccounts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -115,6 +167,15 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
                 <ScalarProperty Name="Wystawiajacy" ColumnName="Wystawiajacy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoneyAccounts">
+            <EntityTypeMapping TypeName="SprzedaneModel.MoneyAccounts">
+              <MappingFragment StoreEntitySet="MoneyAccounts">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,6 +14,11 @@ namespace Sprzedane
     
     public partial class AspNetUsers
     {
+        public AspNetUsers()
+        {
+            this.MoneyAccounts = new HashSet<MoneyAccounts>();
+        }
+    
         public string Id { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
@@ -26,5 +31,7 @@ namespace Sprzedane
         public string KodPocztowy { get; set; }
         public string Miasto { get; set; }
         public Nullable<System.DateTime> DataUrodzenia { get; set; }
+    
+        public virtual ICollection<MoneyAccounts> MoneyAccounts { get; set; }
     }
 }

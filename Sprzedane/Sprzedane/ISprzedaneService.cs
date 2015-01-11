@@ -30,5 +30,20 @@ namespace Sprzedane
         [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
             Method = "PUT", UriTemplate = "przedmioty/edit")]
         void EditPrzedmiot(Przedmioty p);
+
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "portfele/{id}")]
+        Portfele GetPortfel(string id);
+
+        [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
+            Method = "POST", UriTemplate = "portfele/add")]
+        void AddPortfel(Portfele p);
+
+        [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
+            Method = "POST", UriTemplate = "portfele/delete")]
+        void DeletePortfel(Portfele p);
+
+        [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
+            Method = "POST", UriTemplate = "portfele/set")]
+        void SetSaldo(Portfele p);
     }
 }

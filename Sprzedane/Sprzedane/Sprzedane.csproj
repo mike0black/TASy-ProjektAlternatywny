@@ -83,6 +83,10 @@
     </Compile>
     <Compile Include="ISprzedaneService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MoneyAccounts.cs">
+      <DependentUpon>SprzedaneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Portfele.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Przedmioties.cs">
       <DependentUpon>SprzedaneModel.tt</DependentUpon>

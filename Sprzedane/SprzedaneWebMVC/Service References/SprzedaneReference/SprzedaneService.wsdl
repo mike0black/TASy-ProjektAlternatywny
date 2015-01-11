@@ -37,6 +37,30 @@
   <wsdl:message name="ISprzedaneService_EditPrzedmiot_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditPrzedmiotResponse" />
   </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetPortfel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortfel" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetPortfel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortfelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_AddPortfel_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPortfel" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_AddPortfel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPortfelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_DeletePortfel_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePortfel" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_DeletePortfel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePortfelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_SetSaldo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetSaldo" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_SetSaldo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetSaldoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISprzedaneService">
     <wsdl:operation name="GetPrzedmioty">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmioty" message="tns:ISprzedaneService_GetPrzedmioty_InputMessage" />
@@ -57,6 +81,22 @@
     <wsdl:operation name="EditPrzedmiot">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/EditPrzedmiot" message="tns:ISprzedaneService_EditPrzedmiot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/EditPrzedmiotResponse" message="tns:ISprzedaneService_EditPrzedmiot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortfel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPortfel" message="tns:ISprzedaneService_GetPortfel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPortfelResponse" message="tns:ISprzedaneService_GetPortfel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPortfel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/AddPortfel" message="tns:ISprzedaneService_AddPortfel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/AddPortfelResponse" message="tns:ISprzedaneService_AddPortfel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePortfel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/DeletePortfel" message="tns:ISprzedaneService_DeletePortfel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/DeletePortfelResponse" message="tns:ISprzedaneService_DeletePortfel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSaldo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/SetSaldo" message="tns:ISprzedaneService_SetSaldo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/SetSaldoResponse" message="tns:ISprzedaneService_SetSaldo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="SprzedaneService" />
