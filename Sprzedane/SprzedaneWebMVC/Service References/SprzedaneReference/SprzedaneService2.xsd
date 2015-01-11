@@ -13,6 +13,7 @@
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="Kategoria" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Nazwa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wygrywajacy" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Wystawiajacy" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

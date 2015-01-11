@@ -13,10 +13,50 @@
   <wsdl:message name="ISprzedaneService_GetPrzedmioty_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPrzedmiotyResponse" />
   </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetAllPrzedmioty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPrzedmioty" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetAllPrzedmioty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPrzedmiotyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_AddPrzedmiot_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPrzedmiot" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_AddPrzedmiot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPrzedmiotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_DeletePrzedmiot_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrzedmiot" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_DeletePrzedmiot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrzedmiotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_EditPrzedmiot_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditPrzedmiot" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_EditPrzedmiot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditPrzedmiotResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISprzedaneService">
     <wsdl:operation name="GetPrzedmioty">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmioty" message="tns:ISprzedaneService_GetPrzedmioty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiotyResponse" message="tns:ISprzedaneService_GetPrzedmioty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPrzedmioty">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmioty" message="tns:ISprzedaneService_GetAllPrzedmioty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmiotyResponse" message="tns:ISprzedaneService_GetAllPrzedmioty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPrzedmiot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/AddPrzedmiot" message="tns:ISprzedaneService_AddPrzedmiot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/AddPrzedmiotResponse" message="tns:ISprzedaneService_AddPrzedmiot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrzedmiot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/DeletePrzedmiot" message="tns:ISprzedaneService_DeletePrzedmiot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/DeletePrzedmiotResponse" message="tns:ISprzedaneService_DeletePrzedmiot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditPrzedmiot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/EditPrzedmiot" message="tns:ISprzedaneService_EditPrzedmiot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/EditPrzedmiotResponse" message="tns:ISprzedaneService_EditPrzedmiot_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="SprzedaneService" />

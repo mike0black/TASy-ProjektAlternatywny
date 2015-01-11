@@ -19,8 +19,7 @@ namespace Sprzedane
         public string Kategoria { get; set; }
         public double Cena { get; set; }
         public System.DateTime DataZakonczenia { get; set; }
-        public string WystawiajacyId { get; set; }
-    
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public string Wystawiajacy { get; set; }
+        public string Wygrywajacy { get; set; }
     }
 }

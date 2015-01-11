@@ -20,6 +20,12 @@ namespace SprzedaneWebMVC
             );
 
             routes.MapRoute(
+                name: "Przedmioty",
+                url: "{controller}/{action}/{id}/{serchIn}",
+                defaults: new { controller = "Przedmioty", action = "Index", id = UrlParameter.Optional, serchIn = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Wyszukiwarka",
                 url: "{controller}/{action}/{name}",
                 defaults: new { controller = "Wyszukiwarka", action = "PoNazwie", name = "" }

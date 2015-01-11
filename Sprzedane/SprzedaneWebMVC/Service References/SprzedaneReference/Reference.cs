@@ -38,6 +38,9 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         private string NazwaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WygrywajacyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WystawiajacyField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -116,6 +119,19 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Wygrywajacy {
+            get {
+                return this.WygrywajacyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WygrywajacyField, value) != true)) {
+                    this.WygrywajacyField = value;
+                    this.RaisePropertyChanged("Wygrywajacy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Wystawiajacy {
             get {
                 return this.WystawiajacyField;
@@ -147,6 +163,30 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/GetPrzedmioty", ReplyAction="http://tempuri.org/ISprzedaneService/GetPrzedmiotyResponse")]
         System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Przedmioty[]> GetPrzedmiotyAsync(string term);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmioty", ReplyAction="http://tempuri.org/ISprzedaneService/GetAllPrzedmiotyResponse")]
+        SprzedaneWebMVC.SprzedaneReference.Przedmioty[] GetAllPrzedmioty();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmioty", ReplyAction="http://tempuri.org/ISprzedaneService/GetAllPrzedmiotyResponse")]
+        System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Przedmioty[]> GetAllPrzedmiotyAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/AddPrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/AddPrzedmiotResponse")]
+        void AddPrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/AddPrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/AddPrzedmiotResponse")]
+        System.Threading.Tasks.Task AddPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/DeletePrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/DeletePrzedmiotResponse")]
+        void DeletePrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/DeletePrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/DeletePrzedmiotResponse")]
+        System.Threading.Tasks.Task DeletePrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/EditPrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/EditPrzedmiotResponse")]
+        void EditPrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISprzedaneService/EditPrzedmiot", ReplyAction="http://tempuri.org/ISprzedaneService/EditPrzedmiotResponse")]
+        System.Threading.Tasks.Task EditPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -182,6 +222,38 @@ namespace SprzedaneWebMVC.SprzedaneReference {
         
         public System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Przedmioty[]> GetPrzedmiotyAsync(string term) {
             return base.Channel.GetPrzedmiotyAsync(term);
+        }
+        
+        public SprzedaneWebMVC.SprzedaneReference.Przedmioty[] GetAllPrzedmioty() {
+            return base.Channel.GetAllPrzedmioty();
+        }
+        
+        public System.Threading.Tasks.Task<SprzedaneWebMVC.SprzedaneReference.Przedmioty[]> GetAllPrzedmiotyAsync() {
+            return base.Channel.GetAllPrzedmiotyAsync();
+        }
+        
+        public void AddPrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            base.Channel.AddPrzedmiot(p);
+        }
+        
+        public System.Threading.Tasks.Task AddPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            return base.Channel.AddPrzedmiotAsync(p);
+        }
+        
+        public void DeletePrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            base.Channel.DeletePrzedmiot(p);
+        }
+        
+        public System.Threading.Tasks.Task DeletePrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            return base.Channel.DeletePrzedmiotAsync(p);
+        }
+        
+        public void EditPrzedmiot(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            base.Channel.EditPrzedmiot(p);
+        }
+        
+        public System.Threading.Tasks.Task EditPrzedmiotAsync(SprzedaneWebMVC.SprzedaneReference.Przedmioty p) {
+            return base.Channel.EditPrzedmiotAsync(p);
         }
     }
 }

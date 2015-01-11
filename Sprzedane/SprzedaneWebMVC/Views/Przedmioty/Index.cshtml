@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SprzedaneWebMVC.Models.Przedmiot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Dodaj")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Search: @Html.TextBox("id") in: @Html.DropDownList("serchIn")    
+        <input type="submit" value="Filter" class="btn btn-default" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataZakonczenia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wystawiajacy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wygrywajacy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZakonczenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wystawiajacy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wygrywajacy)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Detale", new { id = item.ID }) |
+            @Html.ActionLink("Edit", "Edytuj", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Usun", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

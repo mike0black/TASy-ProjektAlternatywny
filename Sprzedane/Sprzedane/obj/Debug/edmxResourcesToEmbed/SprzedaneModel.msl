@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
+  <EntityContainerMapping StorageEntityContainer="SprzedaneModelStoreContainer" CdmEntityContainer="SprzedaneEntities">
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="Model.AspNetUsers">
+      <EntityTypeMapping TypeName="SprzedaneModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -20,14 +20,15 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Przedmioties">
-      <EntityTypeMapping TypeName="Model.Przedmioties">
+      <EntityTypeMapping TypeName="SprzedaneModel.Przedmioties">
         <MappingFragment StoreEntitySet="Przedmioties">
+          <ScalarProperty Name="Wygrywajacy" ColumnName="Wygrywajacy" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
           <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
           <ScalarProperty Name="Cena" ColumnName="Cena" />
           <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
-          <ScalarProperty Name="WystawiajacyId" ColumnName="WystawiajacyId" />
+          <ScalarProperty Name="Wystawiajacy" ColumnName="Wystawiajacy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

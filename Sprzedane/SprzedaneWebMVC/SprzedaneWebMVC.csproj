@@ -161,7 +161,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AukcjeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrzedmiotyController.cs" />
     <Compile Include="Controllers\WyszukiwarkaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,9 +247,15 @@
     </Content>
     <Content Include="Views\Wyszukiwarka\Index.cshtml" />
     <Content Include="Views\Wyszukiwarka\PoNazwie.cshtml" />
+    <Content Include="Views\Przedmioty\Index.cshtml" />
+    <Content Include="Views\Przedmioty\Detale.cshtml" />
+    <Content Include="Views\Przedmioty\Dodaj.cshtml" />
+    <Content Include="Views\Przedmioty\Usun.cshtml" />
+    <Content Include="Views\Przedmioty\Edytuj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Aukcje\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

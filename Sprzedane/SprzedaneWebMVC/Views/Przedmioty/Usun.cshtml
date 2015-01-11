@@ -1,0 +1,72 @@
+﻿@model SprzedaneWebMVC.Models.Przedmiot
+
+@{
+    ViewBag.Title = "Usun";
+}
+
+<h2>Usun</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Przedmiot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataZakonczenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataZakonczenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wystawiajacy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wystawiajacy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wygrywajacy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wygrywajacy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+            }
+        </div>

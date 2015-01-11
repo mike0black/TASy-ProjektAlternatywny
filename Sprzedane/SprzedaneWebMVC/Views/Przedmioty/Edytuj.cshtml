@@ -1,0 +1,83 @@
+﻿@model SprzedaneWebMVC.Models.Przedmiot
+
+@{
+    ViewBag.Title = "Edytuj";
+    SprzedaneWebMVC.Models.Przedmiot item = ViewBag.Przedmiot;
+}
+
+<h2>Edytuj</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Przedmiot</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => item.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.Nazwa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.Nazwa)
+                @Html.ValidationMessageFor(model => item.Nazwa)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.Kategoria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.Kategoria)
+                @Html.ValidationMessageFor(model => item.Kategoria)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.Cena, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.Cena)
+                @Html.ValidationMessageFor(model => item.Cena)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.DataZakonczenia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.DataZakonczenia)
+                @Html.ValidationMessageFor(model => item.DataZakonczenia)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.Wystawiajacy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.Wystawiajacy)
+                @Html.ValidationMessageFor(model => item.Wystawiajacy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => item.Wygrywajacy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => item.Wygrywajacy)
+                @Html.ValidationMessageFor(model => item.Wygrywajacy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

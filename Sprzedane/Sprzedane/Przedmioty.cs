@@ -20,6 +20,8 @@ namespace Sprzedane
         [DataMember]
         public DateTime DataZakonczenia { get; set; }
         [DataMember]
-        public String WystawiajacyId { get; set; }
+        public String Wystawiajacy { get; set; }
+        [DataMember]
+        public String Wygrywajacy { get; set; }
     }
 }

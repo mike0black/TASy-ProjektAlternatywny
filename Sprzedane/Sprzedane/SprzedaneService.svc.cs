@@ -17,10 +17,62 @@ namespace Sprzedane
         {
             SprzedaneEntities dc = new SprzedaneEntities();
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
-                                 where p.Nazwa.ToLower().Contains(term.ToLower())
-                                 select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
-                                     DataZakonczenia = p.DataZakonczenia, WystawiajacyId = p.WystawiajacyId }).ToList();
+                where p.Nazwa.ToLower().Contains(term.ToLower())
+                select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
+                    DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy }).ToList();
             return ListaPrzedmiotow;
         }
+        public IList<Przedmioty> GetAllPrzedmioty()
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties select new Przedmioty()
+            {
+                ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
+                DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy
+            }).ToList();
+            return ListaPrzedmiotow;
+        }
+
+        public void AddPrzedmiot(Przedmioty p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            var przedmiot = new Przedmioties
+            {
+                Nazwa = p.Nazwa,
+                Kategoria = p.Kategoria,
+                Cena = p.Cena,
+                DataZakonczenia = p.DataZakonczenia,
+                Wystawiajacy = p.Wystawiajacy,
+                Wygrywajacy = null
+            };
+            dc.Przedmioties.Add(przedmiot);
+            dc.SaveChanges();
+        }
+
+        public void DeletePrzedmiot(Przedmioty p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            var przedmiot = new Przedmioties
+            {
+                Nazwa = p.Nazwa,
+                Kategoria = p.Kategoria,
+                Cena = p.Cena,
+                DataZakonczenia = p.DataZakonczenia,
+                Wystawiajacy = p.Wystawiajacy,
+                Wygrywajacy = p.Wygrywajacy
+            };
+            dc.Przedmioties.Remove(przedmiot);
+            dc.SaveChanges();
+        }
+
+        public void EditPrzedmiot(Przedmioty p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            dc.Przedmioties.SqlQuery("Update dbo.Przedmioties " +
+                "Set Nazwa = @p.Nazwa, Kategoria = @p.Kategoria, Cena = @p.Cena, " +
+                "DataZakonczenia = @p.DataZakonczenia, Wystawiajacy = @p.Wystawiajacy, Wygrywajacy = @p.Wygrywajacy" +
+                "Where ID = @p.ID", p.ID, p.Nazwa, p.Kategoria, p.Cena, p.DataZakonczenia, p.Wystawiajacy, p.Wygrywajacy);
+            dc.SaveChanges();
+        }
     }
 }

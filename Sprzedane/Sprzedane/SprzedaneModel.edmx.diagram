@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18989155b19c4e79b2d3bd8c37e39389" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Przedmioties" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <AssociationConnector Association="Model.WystawiajacyId" ManuallyRouted="false" />
+      <Diagram DiagramId="c74e7e605ef7474098e61fa800a1c900" Name="Diagram1">
+        <EntityTypeShape EntityType="SprzedaneModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprzedaneModel.Przedmioties" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
