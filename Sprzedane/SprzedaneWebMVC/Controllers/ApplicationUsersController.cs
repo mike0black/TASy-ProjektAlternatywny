@@ -127,7 +127,7 @@ namespace SprzedaneWebMVC.Controllers
                 DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Portfel));
                 serializerToUplaod.WriteObject(ms2, p);
                 webClient.Headers["Content-type"] = "application/json";
-                webClient.UploadData(SprzedaneServiceUri + "portfele/delete", "DELETE", ms2.ToArray());
+                webClient.UploadData(SprzedaneServiceUri + "portfele/delete", "POST", ms2.ToArray());
             }
             ///
             

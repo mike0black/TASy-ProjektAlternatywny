@@ -77,10 +77,23 @@ namespace Sprzedane
 
         public Portfele GetPortfel(string id)
         {
+            Portfele portfel = new Portfele();
             SprzedaneEntities dc = new SprzedaneEntities();
-            Portfele portfel = (Portfele)(from p in dc.MoneyAccounts where p.UserID == id
-                select new Portfele() { AccountID = p.AccountID, UserID = p.UserID, Saldo = (float)p.Saldo });
+            List<Portfele> Lista = (from p in dc.MoneyAccounts //where p.UserID == id
+                select new Portfele() { AccountID = p.AccountID, UserID = p.UserID, Saldo = (float)p.Saldo }).ToList();
+            foreach (Portfele p in Lista)
+            {
+                if(p.UserID == id) portfel = p;
+            }
             return portfel;
+        }
+
+        public IList<Portfele> GetAllPortfele()
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            IList<Portfele> Lista = (from p in dc.MoneyAccounts
+                select new Portfele() { AccountID = p.AccountID, UserID = p.UserID, Saldo = (float)p.Saldo }).ToList();
+            return Lista;
         }
 
         public void AddPortfel(Portfele p)
@@ -98,13 +111,20 @@ namespace Sprzedane
         public void DeletePortfel(Portfele p)
         {
             SprzedaneEntities dc = new SprzedaneEntities();
-            var portfel = new MoneyAccounts
+            Portfele p1 = new Portfele();
+            List<Portfele> Lista = (from portfel in dc.MoneyAccounts //where p.UserID == id
+                                    select new Portfele() { AccountID = portfel.AccountID, UserID = portfel.UserID, Saldo = (float)portfel.Saldo }).ToList();
+            foreach (Portfele p2 in Lista)
             {
-                AccountID = p.AccountID,
-                UserID = p.UserID,
-                Saldo = p.Saldo
+                if (p2.UserID == p.UserID) p1 = p2;
+            }
+            var portfel1 = new MoneyAccounts
+            {
+                AccountID = p1.AccountID,
+                UserID = p1.UserID,
+                Saldo = p1.Saldo
             };
-            dc.MoneyAccounts.Remove(portfel);
+            dc.MoneyAccounts.Remove(portfel1);
             dc.SaveChanges();
         }
 

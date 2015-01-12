@@ -34,6 +34,9 @@ namespace Sprzedane
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "portfele/{id}")]
         Portfele GetPortfel(string id);
 
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "portfele")]
+        IList<Portfele> GetAllPortfele();
+
         [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
             Method = "POST", UriTemplate = "portfele/add")]
         void AddPortfel(Portfele p);

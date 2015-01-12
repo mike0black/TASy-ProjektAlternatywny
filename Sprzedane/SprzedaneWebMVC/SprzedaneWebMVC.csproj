@@ -263,11 +263,12 @@
     <Content Include="Service References\SprzedaneReference\SprzedaneWebMVC.SprzedaneReference.Portfele.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Portfel\Index.cshtml" />
+    <Content Include="Views\Portfel\SetSaldo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Aukcje\" />
-    <Folder Include="Views\Portfel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

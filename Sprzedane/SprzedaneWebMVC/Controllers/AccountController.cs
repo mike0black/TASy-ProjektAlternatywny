@@ -12,6 +12,7 @@ using SprzedaneWebMVC.Models;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 
 namespace SprzedaneWebMVC.Controllers
 {
@@ -99,7 +100,20 @@ namespace SprzedaneWebMVC.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                     ///
-                    Portfel p = new Portfel() { UserID = User.Identity.GetUserId() };
+                    List<Portfel> Lista = new List<Portfel>();
+                    using (WebClient webClient = new WebClient())
+                    {
+                        string dwml;
+                        dwml = webClient.DownloadString(SprzedaneServiceUri + "portfele");
+                        Lista = JsonConvert.DeserializeObjectAsync<IList<Portfel>>(dwml).Result.ToList();
+                    }
+                    int id = -1;
+                    foreach(Portfel item in Lista)
+                    {
+                        if (id < item.AccountID) id = item.AccountID;
+                    }
+                    id = id + 1;
+                    Portfel p = new Portfel() { AccountID = id, UserID = user.Id };
                     using (WebClient webClient = new WebClient())
                     {
                         MemoryStream ms = new MemoryStream();
