@@ -13,8 +13,8 @@ namespace Sprzedane
     public interface ISprzedaneService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{term}")]
-        IList<Przedmioty> GetPrzedmioty(string term);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{id}")]
+        IList<Przedmioty> GetPrzedmiot(string id);
 
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty")]
         IList<Przedmioty> GetAllPrzedmioty();

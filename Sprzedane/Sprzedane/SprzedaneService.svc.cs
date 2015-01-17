@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.Text;
+using System.Web.ModelBinding;
 
 namespace Sprzedane
 {
@@ -14,11 +16,11 @@ namespace Sprzedane
 
     public class SprzedaneService : ISprzedaneService
     {
-        public IList<Przedmioty> GetPrzedmioty(string term)
+        public IList<Przedmioty> GetPrzedmiot(string id)
         {
             SprzedaneEntities dc = new SprzedaneEntities();
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
-                where p.Nazwa.ToLower().Contains(term.ToLower())
+                where p.ID.ToString().ToLower().Contains(id.ToLower())
                 select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
                     DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy }).ToList();
             return ListaPrzedmiotow;
@@ -150,6 +152,7 @@ namespace Sprzedane
             SprzedaneEntities dc = new SprzedaneEntities();
             var przedmiot = new Przedmioties
             {
+                ID = p.ID,
                 Nazwa = p.Nazwa,
                 Kategoria = p.Kategoria,
                 Cena = p.Cena,
@@ -164,10 +167,21 @@ namespace Sprzedane
         public void EditPrzedmiot(Przedmioty p)
         {
             SprzedaneEntities dc = new SprzedaneEntities();
-            dc.Przedmioties.SqlQuery("Update dbo.Przedmioties " +
-                "Set Nazwa = @p.Nazwa, Kategoria = @p.Kategoria, Cena = @p.Cena, " +
-                "DataZakonczenia = @p.DataZakonczenia, Wystawiajacy = @p.Wystawiajacy, Wygrywajacy = @p.Wygrywajacy" +
-                "Where ID = @p.ID", p.ID, p.Nazwa, p.Kategoria, p.Cena, p.DataZakonczenia, p.Wystawiajacy, p.Wygrywajacy);
+            var przedmiot = new Przedmioties
+            {
+                ID = p.ID,
+                Nazwa = p.Nazwa,
+                Kategoria = p.Kategoria,
+                Cena = p.Cena,
+                DataZakonczenia = p.DataZakonczenia,
+                Wystawiajacy = p.Wystawiajacy,
+                Wygrywajacy = p.Wygrywajacy
+            };
+            dc.Entry(przedmiot).State = EntityState.Modified;
+            //dc.Przedmioties.SqlQuery("Update dbo.Przedmioties " +
+            //    "Set Nazwa = @p.Nazwa, Kategoria = @p.Kategoria, Cena = @p.Cena, " +
+            //    "DataZakonczenia = @p.DataZakonczenia, Wystawiajacy = @p.Wystawiajacy, Wygrywajacy = @p.Wygrywajacy" +
+            //    "Where ID = @p.ID", p.ID, p.Nazwa, p.Kategoria, p.Cena, p.DataZakonczenia, p.Wystawiajacy, p.Wygrywajacy);
             dc.SaveChanges();
         }
 

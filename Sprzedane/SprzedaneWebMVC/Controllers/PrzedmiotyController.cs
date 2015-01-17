@@ -18,49 +18,63 @@ namespace SprzedaneWebMVC.Controllers
         
         public ActionResult Index(string id, string serchIn)
         {
-            IEnumerable<Przedmiot> Lista = new List<Przedmiot>();
-            var serchInList = new List<string>() {"ID", "Nazwa", "Kategoria", "Cena", "Wystawiajacy", "Wygrywajacy"};
-            ViewBag.SerchIN = new SelectList(serchInList);
-
-            if (!String.IsNullOrEmpty(id))
+            try
             {
-                using (WebClient webClient = new WebClient())
-                {
-                    string dwml;
-                    dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id + "/" + serchIn);
-                    Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
-                }
-            }
-            else
-            {
-                using (WebClient webClient = new WebClient())
-                {
-                    string dwml;
-                    dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
-                    Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
-                }
-            }
+                IEnumerable<Przedmiot> Lista = new List<Przedmiot>();
+                var serchInList = new List<string>() { "ID", "Nazwa", "Kategoria", "Cena", "Wystawiajacy", "Wygrywajacy" };
+                ViewBag.SerchIN = new SelectList(serchInList);
 
-            return View(Lista);
+                if (!String.IsNullOrEmpty(id))
+                {
+                    using (WebClient webClient = new WebClient())
+                    {
+                        string dwml;
+                        dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id + "/" + serchIn);
+                        Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
+                    }
+                }
+                else
+                {
+                    using (WebClient webClient = new WebClient())
+                    {
+                        string dwml;
+                        dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
+                        Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
+                    }
+                }
+                
+                return View(Lista);
+            }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         public ActionResult Detale(int id)
         {
-            List<Przedmiot> Lista = new List<Przedmiot>();
-            Przedmiot p = new Przedmiot();
-
-            using (WebClient webClient = new WebClient())
+            try
             {
-                string dwml;
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
-                Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
-            }
-            foreach (Przedmiot item in Lista)
-            {
-                if (item.ID == id) p = item;
-            }
+                List<Przedmiot> Lista = new List<Przedmiot>();
+                Przedmiot p = new Przedmiot();
 
-            return View(p);
+                using (WebClient webClient = new WebClient())
+                {
+                    string dwml;
+                    dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id.ToString());
+                    Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
+                }
+                foreach (Przedmiot item in Lista)
+                {
+                    if (item.ID == id) p = item;
+                }
+
+                return View(p);
+            }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         public ActionResult Dodaj()
@@ -69,7 +83,8 @@ namespace SprzedaneWebMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Dodaj(Przedmiot p)
+        public ActionResult Dodaj(
+            [Bind(Include = "ID, Nazwa, Kategoria, Cena, Data Zakonczenia, Wystawiajacy, Wygrywajacy")]Przedmiot p)
         {
             p.Wystawiajacy = User.Identity.Name;            
             using (WebClient webClient = new WebClient())
@@ -92,7 +107,7 @@ namespace SprzedaneWebMVC.Controllers
             using (WebClient webClient = new WebClient())
             {
                 string dwml;
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
+                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id.ToString());
                 Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
             }
             foreach (Przedmiot item in Lista)
@@ -104,7 +119,8 @@ namespace SprzedaneWebMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Usun(Przedmiot p)
+        public ActionResult Usun(
+            [Bind(Include = "ID, Nazwa, Kategoria, Cena, Data Zakonczenia, Wystawiajacy, Wygrywajacy")]Przedmiot p)
         {
             using (WebClient webClient = new WebClient())
             {
@@ -126,7 +142,7 @@ namespace SprzedaneWebMVC.Controllers
             using (WebClient webClient = new WebClient())
             {
                 string dwml;
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
+                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id.ToString());
                 Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
             }
             foreach (Przedmiot item in Lista)

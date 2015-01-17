@@ -14,6 +14,7 @@
     <p>
         Search: @Html.TextBox("id") in: @Html.DropDownList("serchIn")    
         <input type="submit" value="Filter" class="btn btn-default" />
+        @Html.ActionLink("Show All", "Index", new { id = "" })
     </p>
 }
 <table class="table">
