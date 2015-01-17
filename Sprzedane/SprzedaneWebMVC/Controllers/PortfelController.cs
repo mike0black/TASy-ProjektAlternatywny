@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using SprzedaneWebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,19 @@ using System.Web.Mvc;
 
 namespace SprzedaneWebMVC.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PortfelController : Controller
     {
         readonly string SprzedaneServiceUri = "http://localhost:1622/SprzedaneService.svc/";
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Portfel
         public ActionResult Index(string id)
         {
             List<Portfel> Lista = new List<Portfel>();
             Portfel p = new Portfel();
+            ApplicationUser user = (ApplicationUser)db.IdentityUsers.Where(u => u.UserName == id);
+            id = user.Id;
 
             using (WebClient webClient = new WebClient())
             {
@@ -40,6 +45,8 @@ namespace SprzedaneWebMVC.Controllers
         {
             List<Portfel> Lista = new List<Portfel>();
             Portfel p = new Portfel();
+            ApplicationUser user = (ApplicationUser)db.IdentityUsers.Where(u => u.UserName == id);
+            id = user.Id;
 
             using (WebClient webClient = new WebClient())
             {

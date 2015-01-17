@@ -22,35 +22,23 @@ namespace SprzedaneWebMVC.Controllers
             var serchInList = new List<string>() {"ID", "Nazwa", "Kategoria", "Cena", "Wystawiajacy", "Wygrywajacy"};
             ViewBag.SerchIN = new SelectList(serchInList);
 
-            using (WebClient webClient = new WebClient())
+            if (!String.IsNullOrEmpty(id))
             {
-                string dwml;
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
-                Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
-            }
-            if (!String.IsNullOrEmpty(id) && !String.IsNullOrEmpty(serchIn))
-            {
-                switch (serchIn)
+                using (WebClient webClient = new WebClient())
                 {
-                    case "ID":
-                        Lista = Lista.Where(p => p.ID.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                    case "Nazwa":
-                        Lista = Lista.Where(p => p.Nazwa.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                    case "Kategoria":
-                        Lista = Lista.Where(p => p.Kategoria.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                    case "Cena":
-                        Lista = Lista.Where(p => p.Cena.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                    case "Wystawiajacy":
-                        Lista = Lista.Where(p => p.Wystawiajacy.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                    case "Wygrywajacy":
-                        Lista = Lista.Where(p => p.Wygrywajacy.ToString().ToLower().Contains(id.ToString().ToLower()));
-                        break;
-                }     
+                    string dwml;
+                    dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id + "/" + serchIn);
+                    Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
+                }
+            }
+            else
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    string dwml;
+                    dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
+                    Lista = JsonConvert.DeserializeObjectAsync<List<Przedmiot>>(dwml).Result;
+                }
             }
 
             return View(Lista);
@@ -67,10 +55,6 @@ namespace SprzedaneWebMVC.Controllers
                 dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty");
                 Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
             }
-            //Przedmiot p = (Przedmiot)(from przedmiot in Lista where przedmiot.ID == id
-            //    select new Przedmiot() { ID =  przedmiot.ID, Nazwa = przedmiot.Nazwa, Kategoria = przedmiot.Kategoria,
-            //    Cena = przedmiot.Cena, DataZakonczenia = przedmiot.DataZakonczenia,
-            //    Wystawiajacy = przedmiot.Wystawiajacy, Wygrywajacy = przedmiot.Wygrywajacy });
             foreach (Przedmiot item in Lista)
             {
                 if (item.ID == id) p = item;
@@ -87,7 +71,7 @@ namespace SprzedaneWebMVC.Controllers
         [HttpPost]
         public ActionResult Dodaj(Przedmiot p)
         {
-                        
+            p.Wystawiajacy = User.Identity.Name;            
             using (WebClient webClient = new WebClient())
             {
                 MemoryStream ms = new MemoryStream();
@@ -119,7 +103,7 @@ namespace SprzedaneWebMVC.Controllers
             return View(p);
         }
 
-        [HttpPost]//[HttpDelete]
+        [HttpPost]
         public ActionResult Usun(Przedmiot p)
         {
             using (WebClient webClient = new WebClient())
@@ -149,9 +133,8 @@ namespace SprzedaneWebMVC.Controllers
             {
                 if (item.ID == id) p = item;
             }
-            ViewBag.Przedmiot = p;
 
-            return View();
+            return View(p);
         }
 
         [HttpPost]

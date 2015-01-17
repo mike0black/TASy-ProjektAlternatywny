@@ -21,7 +21,7 @@ namespace SprzedaneWebMVC.Models
         [Display(Name= "Cena")]
         [DataType(DataType.Currency)]
         [Range(1.00, 10000000.00, ErrorMessage= "Minimalna {0} to 1.00 zł")]
-        public float Cena { get; set; }
+        public double Cena { get; set; }
         [Required]
         [Display(Name= "Data Zakonczenia")]
         [DataType(DataType.Date)]

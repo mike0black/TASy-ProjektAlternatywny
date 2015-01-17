@@ -19,6 +19,12 @@
   <wsdl:message name="ISprzedaneService_GetAllPrzedmioty_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPrzedmiotyResponse" />
   </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetPrzedmiotyBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrzedmiotyBy" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetPrzedmiotyBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrzedmiotyByResponse" />
+  </wsdl:message>
   <wsdl:message name="ISprzedaneService_AddPrzedmiot_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPrzedmiot" />
   </wsdl:message>
@@ -42,6 +48,12 @@
   </wsdl:message>
   <wsdl:message name="ISprzedaneService_GetPortfel_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPortfelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetAllPortfele_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPortfele" />
+  </wsdl:message>
+  <wsdl:message name="ISprzedaneService_GetAllPortfele_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPortfeleResponse" />
   </wsdl:message>
   <wsdl:message name="ISprzedaneService_AddPortfel_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPortfel" />
@@ -70,6 +82,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmioty" message="tns:ISprzedaneService_GetAllPrzedmioty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmiotyResponse" message="tns:ISprzedaneService_GetAllPrzedmioty_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPrzedmiotyBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiotyBy" message="tns:ISprzedaneService_GetPrzedmiotyBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiotyByResponse" message="tns:ISprzedaneService_GetPrzedmiotyBy_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddPrzedmiot">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/AddPrzedmiot" message="tns:ISprzedaneService_AddPrzedmiot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/AddPrzedmiotResponse" message="tns:ISprzedaneService_AddPrzedmiot_OutputMessage" />
@@ -85,6 +101,10 @@
     <wsdl:operation name="GetPortfel">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPortfel" message="tns:ISprzedaneService_GetPortfel_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPortfelResponse" message="tns:ISprzedaneService_GetPortfel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPortfele">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPortfele" message="tns:ISprzedaneService_GetAllPortfele_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPortfeleResponse" message="tns:ISprzedaneService_GetAllPortfele_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddPortfel">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/AddPortfel" message="tns:ISprzedaneService_AddPortfel_InputMessage" />

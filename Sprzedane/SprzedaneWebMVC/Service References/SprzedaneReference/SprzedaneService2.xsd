@@ -26,4 +26,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Portfele" nillable="true" type="tns:Portfele" />
+  <xs:complexType name="ArrayOfPortfele">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Portfele" nillable="true" type="tns:Portfele" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortfele" nillable="true" type="tns:ArrayOfPortfele" />
 </xs:schema>

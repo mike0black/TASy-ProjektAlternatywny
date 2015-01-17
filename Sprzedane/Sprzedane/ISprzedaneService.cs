@@ -19,6 +19,9 @@ namespace Sprzedane
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty")]
         IList<Przedmioty> GetAllPrzedmioty();
 
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{term}/{by}")]
+        IList<Przedmioty> GetPrzedmiotyBy(string term, string by);
+
         [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
             Method = "POST", UriTemplate = "przedmioty/add")]
         void AddPrzedmiot(Przedmioty p);

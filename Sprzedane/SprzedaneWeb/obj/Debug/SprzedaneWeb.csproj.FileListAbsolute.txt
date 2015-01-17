@@ -10,3 +10,15 @@ D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.
 D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.csprojResolveAssemblyReference.cache
 D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.dll
 D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.pdb
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll.config
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.pdb
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.csprojResolveAssemblyReference.cache
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.dll
+P:\TASy-ProjektAlternatywny-master\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.pdb
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll.config
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.dll
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\bin\SprzedaneWeb.pdb
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.dll
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.pdb
+P:\TASy - Projekt Alternatywny\Sprzedane\SprzedaneWeb\obj\Debug\SprzedaneWeb.csprojResolveAssemblyReference.cache
