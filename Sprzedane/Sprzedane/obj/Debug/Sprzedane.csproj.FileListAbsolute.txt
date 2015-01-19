@@ -48,3 +48,13 @@ D:\Antoni\TASy\TASy - Projekt Alternatywny\Sprzedane\Sprzedane\bin\EntityFramewo
 D:\Antoni\TASy\TASy - Projekt Alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
 D:\Antoni\TASy\TASy - Projekt Alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
 D:\Antoni\TASy\TASy - Projekt Alternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\Sprzedane.dll.config
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\Sprzedane.dll
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\Sprzedane.pdb
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\EntityFramework.dll
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.dll
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\EntityFramework.xml
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.xml
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
+P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb

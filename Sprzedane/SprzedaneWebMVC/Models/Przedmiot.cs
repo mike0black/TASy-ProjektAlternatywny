@@ -31,5 +31,7 @@ namespace SprzedaneWebMVC.Models
         public String Wystawiajacy { get; set; }
         [Display(Name= "Wygrywajacy")]
         public String Wygrywajacy { get; set; }
+        [Display(Name = "Opis")]
+        public String Opis { get; set; }
     }
 }

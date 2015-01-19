@@ -59,10 +59,19 @@
             @Html.DisplayFor(model => model.Wygrywajacy)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ID)
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |

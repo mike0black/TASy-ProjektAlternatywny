@@ -22,7 +22,7 @@ namespace Sprzedane
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
                 where p.ID.ToString().ToLower().Contains(id.ToLower())
                 select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
-                    DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy }).ToList();
+                    DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy, Opis = p.Opis }).ToList();
             return ListaPrzedmiotow;
         }
 
@@ -32,7 +32,10 @@ namespace Sprzedane
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties select new Przedmioty()
             {
                 ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
-                DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy
+                DataZakonczenia = p.DataZakonczenia,
+                Wystawiajacy = p.Wystawiajacy,
+                Wygrywajacy = p.Wygrywajacy,
+                Opis = p.Opis
             }).ToList();
             return ListaPrzedmiotow;
         }
@@ -54,7 +57,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
                 case "Nazwa":
@@ -68,7 +72,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
                 case "Kategoria":
@@ -82,7 +87,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
                 case "Cena":
@@ -96,7 +102,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
                 case "Wystawiajacy":
@@ -110,7 +117,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
                 case "Wygrywajacy":
@@ -124,7 +132,8 @@ namespace Sprzedane
                                             Cena = p.Cena,
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
-                                            Wygrywajacy = p.Wygrywajacy
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis
                                         }).ToList();
                     break;
             }
@@ -141,7 +150,8 @@ namespace Sprzedane
                 Cena = p.Cena,
                 DataZakonczenia = p.DataZakonczenia,
                 Wystawiajacy = p.Wystawiajacy,
-                Wygrywajacy = null
+                Wygrywajacy = null,
+                Opis = p.Opis
             };
             dc.Przedmioties.Add(przedmiot);
             dc.SaveChanges();
@@ -150,16 +160,7 @@ namespace Sprzedane
         public void DeletePrzedmiot(Przedmioty p)
         {
             SprzedaneEntities dc = new SprzedaneEntities();
-            var przedmiot = new Przedmioties
-            {
-                ID = p.ID,
-                Nazwa = p.Nazwa,
-                Kategoria = p.Kategoria,
-                Cena = p.Cena,
-                DataZakonczenia = p.DataZakonczenia,
-                Wystawiajacy = p.Wystawiajacy,
-                Wygrywajacy = p.Wygrywajacy
-            };
+            var przedmiot = dc.Przedmioties.Find(p.ID);
             dc.Przedmioties.Remove(przedmiot);
             dc.SaveChanges();
         }
@@ -175,13 +176,10 @@ namespace Sprzedane
                 Cena = p.Cena,
                 DataZakonczenia = p.DataZakonczenia,
                 Wystawiajacy = p.Wystawiajacy,
-                Wygrywajacy = p.Wygrywajacy
+                Wygrywajacy = p.Wygrywajacy,
+                Opis = p.Opis
             };
             dc.Entry(przedmiot).State = EntityState.Modified;
-            //dc.Przedmioties.SqlQuery("Update dbo.Przedmioties " +
-            //    "Set Nazwa = @p.Nazwa, Kategoria = @p.Kategoria, Cena = @p.Cena, " +
-            //    "DataZakonczenia = @p.DataZakonczenia, Wystawiajacy = @p.Wystawiajacy, Wygrywajacy = @p.Wygrywajacy" +
-            //    "Where ID = @p.ID", p.ID, p.Nazwa, p.Kategoria, p.Cena, p.DataZakonczenia, p.Wystawiajacy, p.Wygrywajacy);
             dc.SaveChanges();
         }
 

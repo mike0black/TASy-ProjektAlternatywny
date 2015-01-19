@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Antoni\TASy\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\SprzedaneModel.edmx'. 
+﻿// T4 code generation is enabled for model 'P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\SprzedaneModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

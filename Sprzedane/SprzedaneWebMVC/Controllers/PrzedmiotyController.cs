@@ -83,8 +83,7 @@ namespace SprzedaneWebMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Dodaj(
-            [Bind(Include = "ID, Nazwa, Kategoria, Cena, Data Zakonczenia, Wystawiajacy, Wygrywajacy")]Przedmiot p)
+        public ActionResult Dodaj(Przedmiot p)
         {
             p.Wystawiajacy = User.Identity.Name;            
             using (WebClient webClient = new WebClient())
@@ -119,9 +118,9 @@ namespace SprzedaneWebMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Usun(
-            [Bind(Include = "ID, Nazwa, Kategoria, Cena, Data Zakonczenia, Wystawiajacy, Wygrywajacy")]Przedmiot p)
+        public ActionResult Usun(Przedmiot p)
         {
+            p.DataZakonczenia = DateTime.Now;
             using (WebClient webClient = new WebClient())
             {
                 MemoryStream ms = new MemoryStream();

@@ -41,6 +41,7 @@
           <Property Name="DataZakonczenia" Type="datetime" Nullable="false" />
           <Property Name="Wystawiajacy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Wygrywajacy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="UserForeign">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -102,6 +103,7 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
           <Property Name="DataZakonczenia" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Wystawiajacy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Wygrywajacy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="SprzedaneEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
@@ -160,6 +162,7 @@ warning 6035: The relationship 'WystawiajacyForeign' has columns that are not pa
           <EntitySetMapping Name="Przedmioties">
             <EntityTypeMapping TypeName="SprzedaneModel.Przedmioties">
               <MappingFragment StoreEntitySet="Przedmioties">
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
                 <ScalarProperty Name="Wygrywajacy" ColumnName="Wygrywajacy" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />

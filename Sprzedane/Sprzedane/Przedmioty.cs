@@ -23,5 +23,7 @@ namespace Sprzedane
         public String Wystawiajacy { get; set; }
         [DataMember]
         public String Wygrywajacy { get; set; }
+        [DataMember]
+        public String Opis { get; set; }
     }
 }

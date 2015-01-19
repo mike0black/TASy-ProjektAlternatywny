@@ -29,6 +29,7 @@
     <Property Name="DataZakonczenia" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Wystawiajacy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Wygrywajacy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="SprzedaneEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
