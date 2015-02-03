@@ -266,7 +266,9 @@
     <Content Include="Views\Portfel\Index.cshtml" />
     <Content Include="Views\Portfel\SetSaldo.cshtml" />
     <Content Include="Views\Przedmioty\Podbij.cshtml" />
-    <Content Include="Views\Shared\ErrorAuction.cshtml" />
+    <Content Include="Views\Shared\ErrorAuctionSameUser.cshtml" />
+    <Content Include="Views\Shared\ErrorAuctionSameWinner.cshtml" />
+    <Content Include="Views\Shared\ErrorAuctionEnded.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

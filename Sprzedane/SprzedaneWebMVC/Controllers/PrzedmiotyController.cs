@@ -191,7 +191,11 @@ namespace SprzedaneWebMVC.Controllers
         {
             using (WebClient webClient = new WebClient())
             {
-                if (User.Identity.Name.ToString() != p.Wystawiajacy && User.Identity.Name.ToString() != p.Wygrywajacy && p.Zakonczona)
+                if (User.Identity.Name.ToString() != p.Wystawiajacy)
+                {
+                   if(User.Identity.Name.ToString() != p.Wygrywajacy)
+                   {
+                       if(!p.Zakonczona)
                 {
                     p.Wygrywajacy = User.Identity.Name.ToString();
                     MemoryStream ms = new MemoryStream();
@@ -203,10 +207,20 @@ namespace SprzedaneWebMVC.Controllers
 
                 else
                 {
-                    return View("Error");
+                    return View("ErrorAuctionSameUser");
                 }
-
-            }
+                }
+                else
+                {
+                    return View("ErrorAuctionSameWinner");
+                }
+                }
+                else
+                {
+                    return View("ErrorAuctionEnded");
+                }
+         }
+            
 
             return RedirectToAction("Index");
         }

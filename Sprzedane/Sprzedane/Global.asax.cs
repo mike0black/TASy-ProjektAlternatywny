@@ -23,8 +23,7 @@ namespace Sprzedane
             AuctionChecker ac = new AuctionChecker();
             RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(),
             typeof(SprzedaneService)));
-            worker = new Thread(new ThreadStart(ac.refreshAuction));
-            worker.Start();
+
 
         }
 

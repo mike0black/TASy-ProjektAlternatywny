@@ -12,8 +12,7 @@ namespace Sprzedane
     {
         public void refreshAuction()
         {
-            while (true)
-            {
+
             SprzedaneEntities dc = new SprzedaneEntities();
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
                                                   select new Przedmioty()
@@ -49,9 +48,9 @@ namespace Sprzedane
                     };
                     dc2.Entry(przedmiot).State = EntityState.Modified;
                     dc2.SaveChanges();
-                    TimeSpan t = new TimeSpan(0, 1, 0);
-                    Thread.Sleep(t);
-                }
+  //                  TimeSpan t = new TimeSpan(0, 1, 0);
+ //                   Thread.Sleep(t);
+                
                 }
             }
         }
