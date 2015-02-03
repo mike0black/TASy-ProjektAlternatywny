@@ -22,6 +22,7 @@
     <EntitySetMapping Name="Przedmioties">
       <EntityTypeMapping TypeName="SprzedaneModel.Przedmioties">
         <MappingFragment StoreEntitySet="Przedmioties">
+          <ScalarProperty Name="Zakonczona" ColumnName="Zakonczona" />
           <ScalarProperty Name="Opis" ColumnName="Opis" />
           <ScalarProperty Name="Wygrywajacy" ColumnName="Wygrywajacy" />
           <ScalarProperty Name="ID" ColumnName="ID" />

@@ -1,0 +1,99 @@
+﻿@model SprzedaneWebMVC.Models.Przedmiot
+
+    @{
+        ViewBag.Title = "Podbij";
+    }
+
+    <h2>Podbij</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.Nazwa)
+            @Html.HiddenFor(model => model.Kategoria)
+            @Html.HiddenFor(model => model.DataZakonczenia)
+            @Html.HiddenFor(model => model.Wystawiajacy)
+            @Html.HiddenFor(model => model.Opis)
+            @Html.HiddenFor(model => model.Wygrywajacy)
+            @Html.HiddenFor(model => model.Zakonczona)
+        
+            
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cena, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cena)
+                @Html.ValidationMessageFor(model => model.Cena)
+            </div>
+        </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+
+    }
+    <h4>Przedmiot</h4>
+    <hr />
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Nazwa)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Nazwa)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Kategoria)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Kategoria)
+    </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataZakonczenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataZakonczenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wystawiajacy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wystawiajacy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wygrywajacy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wygrywajacy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

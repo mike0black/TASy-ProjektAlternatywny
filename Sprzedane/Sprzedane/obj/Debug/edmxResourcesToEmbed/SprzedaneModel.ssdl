@@ -37,6 +37,7 @@
     <Property Name="Wystawiajacy" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Wygrywajacy" Type="nvarchar" MaxLength="50" />
     <Property Name="Opis" Type="nvarchar(max)" />
+    <Property Name="Zakonczona" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="UserForeign">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />

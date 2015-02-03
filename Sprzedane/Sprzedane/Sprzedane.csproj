@@ -78,6 +78,7 @@
     <Compile Include="AspNetUsers.cs">
       <DependentUpon>SprzedaneModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AuctionChecker.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

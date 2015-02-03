@@ -25,5 +25,7 @@ namespace Sprzedane
         public String Wygrywajacy { get; set; }
         [DataMember]
         public String Opis { get; set; }
+        [DataMember]
+        public bool Zakonczona { get; set; }
     }
 }

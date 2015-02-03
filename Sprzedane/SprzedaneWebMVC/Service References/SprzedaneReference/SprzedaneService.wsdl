@@ -7,11 +7,11 @@
       <xsd:import schemaLocation="http://localhost:1622/SprzedaneService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Sprzedane" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ISprzedaneService_GetPrzedmioty_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPrzedmioty" />
+  <wsdl:message name="ISprzedaneService_GetPrzedmiot_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrzedmiot" />
   </wsdl:message>
-  <wsdl:message name="ISprzedaneService_GetPrzedmioty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPrzedmiotyResponse" />
+  <wsdl:message name="ISprzedaneService_GetPrzedmiot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrzedmiotResponse" />
   </wsdl:message>
   <wsdl:message name="ISprzedaneService_GetAllPrzedmioty_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPrzedmioty" />
@@ -74,9 +74,9 @@
     <wsdl:part name="parameters" element="tns:SetSaldoResponse" />
   </wsdl:message>
   <wsdl:portType name="ISprzedaneService">
-    <wsdl:operation name="GetPrzedmioty">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmioty" message="tns:ISprzedaneService_GetPrzedmioty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiotyResponse" message="tns:ISprzedaneService_GetPrzedmioty_OutputMessage" />
+    <wsdl:operation name="GetPrzedmiot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiot" message="tns:ISprzedaneService_GetPrzedmiot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISprzedaneService/GetPrzedmiotResponse" message="tns:ISprzedaneService_GetPrzedmiot_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllPrzedmioty">
       <wsdl:input wsaw:Action="http://tempuri.org/ISprzedaneService/GetAllPrzedmioty" message="tns:ISprzedaneService_GetAllPrzedmioty_InputMessage" />

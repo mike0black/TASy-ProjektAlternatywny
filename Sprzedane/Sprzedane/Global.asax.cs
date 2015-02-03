@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Activation;
+using System.Threading;
 using System.Web;
 using System.Web.Routing;
 using System.Web.Security;
@@ -12,10 +13,19 @@ namespace Sprzedane
     public class Global : System.Web.HttpApplication
     {
 
+        public delegate void Worker();
+        private static Thread worker;
+
+
+
         protected void Application_Start(object sender, EventArgs e)
         {
+            AuctionChecker ac = new AuctionChecker();
             RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(),
             typeof(SprzedaneService)));
+            worker = new Thread(new ThreadStart(ac.refreshAuction));
+            worker.Start();
+
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -28,6 +38,7 @@ namespace Sprzedane
             HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             HttpContext.Current.Response.Cache.SetNoStore();
             HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)

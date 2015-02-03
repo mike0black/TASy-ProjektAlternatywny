@@ -34,6 +34,10 @@ namespace Sprzedane
             Method = "PUT", UriTemplate = "przedmioty/edit")]
         void EditPrzedmiot(Przedmioty p);
 
+        [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
+    Method = "PUT", UriTemplate = "przedmioty/bid")]
+        void BidPrzedmiot(Przedmioty p);
+
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "portfele/{id}")]
         Portfele GetPortfel(string id);
 

@@ -58,3 +58,13 @@ P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedan
 P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
 P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
 P:\TASy - ProjektAlternatywny\TASy-ProjektAlternatywny-master\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll.config
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.dll
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\Sprzedane.pdb
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.dll
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.dll
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.xml
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\bin\EntityFramework.SqlServer.xml
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.csprojResolveAssemblyReference.cache
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.dll
+C:\Users\HP\Desktop\TASy-ProjektAlternatywny\Sprzedane\Sprzedane\obj\Debug\Sprzedane.pdb

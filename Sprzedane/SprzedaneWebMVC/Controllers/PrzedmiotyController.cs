@@ -166,5 +166,49 @@ namespace SprzedaneWebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize]
+        public ActionResult Podbij(int id)
+        {
+            List<Przedmiot> Lista = new List<Przedmiot>();
+            Przedmiot p = new Przedmiot();
+
+            using (WebClient webClient = new WebClient())
+            {
+                string dwml;
+                dwml = webClient.DownloadString(SprzedaneServiceUri + "przedmioty/" + id.ToString());
+                Lista = JsonConvert.DeserializeObjectAsync<IList<Przedmiot>>(dwml).Result.ToList();
+            }
+            foreach (Przedmiot item in Lista)
+            {
+                if (item.ID == id) p = item;
+            }
+
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult Podbij(Przedmiot p)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                if (User.Identity.Name.ToString() != p.Wystawiajacy && User.Identity.Name.ToString() != p.Wygrywajacy && p.Zakonczona)
+                {
+                    p.Wygrywajacy = User.Identity.Name.ToString();
+                    MemoryStream ms = new MemoryStream();
+                    DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Przedmiot));
+                    serializerToUplaod.WriteObject(ms, p);
+                    webClient.Headers["Content-type"] = "application/json";
+                    webClient.UploadData(SprzedaneServiceUri + "przedmioty/bid", "PUT", ms.ToArray());
+                }
+
+                else
+                {
+                    return View("Error");
+                }
+
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

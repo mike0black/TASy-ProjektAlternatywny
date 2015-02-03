@@ -115,21 +115,21 @@ namespace SprzedaneWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ///
-            using (WebClient webClient = new WebClient())
-            {
-                string dwml;
-                Portfel p = new Portfel();
-                dwml = webClient.DownloadString(SprzedaneServiceUri + "portfele/" + id);
-                p = JsonConvert.DeserializeObjectAsync<Portfel>(dwml).Result;
+            /////
+            //using (WebClient webClient = new WebClient())
+            //{
+            //    string dwml;
+            //    Portfel p = new Portfel();
+            //    dwml = webClient.DownloadString(SprzedaneServiceUri + "portfele/" + id);
+            //    p = JsonConvert.DeserializeObjectAsync<Portfel>(dwml).Result;
                 
-                MemoryStream ms2 = new MemoryStream();
-                DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Portfel));
-                serializerToUplaod.WriteObject(ms2, p);
-                webClient.Headers["Content-type"] = "application/json";
-                webClient.UploadData(SprzedaneServiceUri + "portfele/delete", "POST", ms2.ToArray());
-            }
-            ///
+            //    MemoryStream ms2 = new MemoryStream();
+            //    DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(Portfel));
+            //    serializerToUplaod.WriteObject(ms2, p);
+            //    webClient.Headers["Content-type"] = "application/json";
+            //    webClient.UploadData(SprzedaneServiceUri + "portfele/delete", "POST", ms2.ToArray());
+            //}
+            /////
             
             ApplicationUser applicationUser = db.IdentityUsers.Find(id);
             db.IdentityUsers.Remove(applicationUser);

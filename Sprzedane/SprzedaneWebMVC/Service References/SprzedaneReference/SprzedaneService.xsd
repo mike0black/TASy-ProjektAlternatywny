@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1622/SprzedaneService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Sprzedane" />
-  <xs:element name="GetPrzedmioty">
+  <xs:element name="GetPrzedmiot">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="term" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPrzedmiotyResponse">
+  <xs:element name="GetPrzedmiotResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Sprzedane" minOccurs="0" name="GetPrzedmiotyResult" nillable="true" type="q1:ArrayOfPrzedmioty" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Sprzedane" minOccurs="0" name="GetPrzedmiotResult" nillable="true" type="q1:ArrayOfPrzedmioty" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

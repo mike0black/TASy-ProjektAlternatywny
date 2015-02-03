@@ -22,26 +22,37 @@ namespace Sprzedane
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
                 where p.ID.ToString().ToLower().Contains(id.ToLower())
                 select new Przedmioty() { ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
-                    DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy, Opis = p.Opis }).ToList();
+                    DataZakonczenia = p.DataZakonczenia, Wystawiajacy = p.Wystawiajacy, Wygrywajacy = p.Wygrywajacy, Opis = p.Opis, Zakonczona = p.Zakonczona }).ToList();
             return ListaPrzedmiotow;
         }
 
         public IList<Przedmioty> GetAllPrzedmioty()
         {
+            AuctionChecker auc = new AuctionChecker();
+            auc.refreshAuction();
+
             SprzedaneEntities dc = new SprzedaneEntities();
             IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties select new Przedmioty()
             {
-                ID = p.ID, Nazwa = p.Nazwa, Kategoria = p.Kategoria, Cena = p.Cena,
+                ID = p.ID,
+                Nazwa = p.Nazwa,
+                Kategoria = p.Kategoria,
+                Cena = p.Cena,
                 DataZakonczenia = p.DataZakonczenia,
                 Wystawiajacy = p.Wystawiajacy,
                 Wygrywajacy = p.Wygrywajacy,
-                Opis = p.Opis
+                Opis = p.Opis,
+                Zakonczona = p.Zakonczona
             }).ToList();
             return ListaPrzedmiotow;
         }
 
         public IList<Przedmioty> GetPrzedmiotyBy(string term, string by)
         {
+            AuctionChecker auc = new AuctionChecker();
+            auc.refreshAuction();
+
+
             SprzedaneEntities dc = new SprzedaneEntities();
             List<Przedmioty> ListaPrzedmiotow = new List<Przedmioty>();
             switch (by)
@@ -58,7 +69,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
                 case "Nazwa":
@@ -73,7 +85,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
                 case "Kategoria":
@@ -88,7 +101,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
                 case "Cena":
@@ -103,7 +117,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
                 case "Wystawiajacy":
@@ -118,7 +133,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
                 case "Wygrywajacy":
@@ -133,7 +149,8 @@ namespace Sprzedane
                                             DataZakonczenia = p.DataZakonczenia,
                                             Wystawiajacy = p.Wystawiajacy,
                                             Wygrywajacy = p.Wygrywajacy,
-                                            Opis = p.Opis
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
                                         }).ToList();
                     break;
             }
@@ -151,7 +168,8 @@ namespace Sprzedane
                 DataZakonczenia = p.DataZakonczenia,
                 Wystawiajacy = p.Wystawiajacy,
                 Wygrywajacy = null,
-                Opis = p.Opis
+                Opis = p.Opis,
+                Zakonczona = false
             };
             dc.Przedmioties.Add(przedmiot);
             dc.SaveChanges();
@@ -177,10 +195,40 @@ namespace Sprzedane
                 DataZakonczenia = p.DataZakonczenia,
                 Wystawiajacy = p.Wystawiajacy,
                 Wygrywajacy = p.Wygrywajacy,
-                Opis = p.Opis
+                Opis = p.Opis,
+                Zakonczona = p.Zakonczona
             };
             dc.Entry(przedmiot).State = EntityState.Modified;
             dc.SaveChanges();
+        }
+
+        public void BidPrzedmiot(Przedmioty p)
+        {
+            SprzedaneEntities dc = new SprzedaneEntities();
+            var przedmiot = dc.Przedmioties.Find(p.ID);
+            if (przedmiot.Cena < p.Cena)
+            {
+                var przedmiot2 = new Przedmioties
+                {
+                    ID = p.ID,
+                    Nazwa = p.Nazwa,
+                    Kategoria = p.Kategoria,
+                    Cena = p.Cena,
+                    DataZakonczenia = p.DataZakonczenia,
+                    Wystawiajacy = p.Wystawiajacy,
+                    Wygrywajacy = p.Wygrywajacy,
+                    Opis = p.Opis,
+                    Zakonczona = p.Zakonczona
+                };
+                dc.Entry(przedmiot2).State = EntityState.Modified;
+                dc.SaveChanges();
+                
+            }
+            else
+            {
+               
+            }
+            
         }
 
         public Portfele GetPortfel(string id)
