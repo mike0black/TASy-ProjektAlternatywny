@@ -66,9 +66,15 @@
             @Html.DisplayFor(model => model.Opis)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Zakonczona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Zakonczona)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edytuj", new { id = Model.ID }) |
+    @Html.ActionLink("Bid", "Podbij", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -157,6 +157,139 @@ namespace Sprzedane
             return ListaPrzedmiotow;
         }
 
+        public IList<Przedmioty> GetAllPrzedmioty2()
+        {
+            AuctionChecker auc = new AuctionChecker();
+            auc.refreshAuction();
+
+            SprzedaneEntities dc = new SprzedaneEntities();
+            IList<Przedmioty> ListaPrzedmiotow = (from p in dc.Przedmioties
+                                                  where p.Zakonczona.Equals(false)
+                                                  select new Przedmioty()
+                                                  {
+                                                      ID = p.ID,
+                                                      Nazwa = p.Nazwa,
+                                                      Kategoria = p.Kategoria,
+                                                      Cena = p.Cena,
+                                                      DataZakonczenia = p.DataZakonczenia,
+                                                      Wystawiajacy = p.Wystawiajacy,
+                                                      Wygrywajacy = p.Wygrywajacy,
+                                                      Opis = p.Opis,
+                                                      Zakonczona = p.Zakonczona
+                                                  }).ToList();
+            return ListaPrzedmiotow;
+        }
+
+        public IList<Przedmioty> GetPrzedmiotyBy2(string term, string by)
+        {
+            AuctionChecker auc = new AuctionChecker();
+            auc.refreshAuction();
+
+
+            SprzedaneEntities dc = new SprzedaneEntities();
+            List<Przedmioty> ListaPrzedmiotow = new List<Przedmioty>();
+            switch (by)
+            {
+                case "ID":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.ID.ToString().ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+                case "Nazwa":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.Nazwa.ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+                case "Kategoria":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.Kategoria.ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+                case "Cena":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.Cena.ToString().ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+                case "Wystawiajacy":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.Wystawiajacy.ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+                case "Wygrywajacy":
+                    ListaPrzedmiotow = (from p in dc.Przedmioties
+                                        where p.Wygrywajacy.ToLower().Contains(term.ToLower()) && p.Zakonczona.Equals(false)
+                                        select new Przedmioty()
+                                        {
+                                            ID = p.ID,
+                                            Nazwa = p.Nazwa,
+                                            Kategoria = p.Kategoria,
+                                            Cena = p.Cena,
+                                            DataZakonczenia = p.DataZakonczenia,
+                                            Wystawiajacy = p.Wystawiajacy,
+                                            Wygrywajacy = p.Wygrywajacy,
+                                            Opis = p.Opis,
+                                            Zakonczona = p.Zakonczona
+                                        }).ToList();
+                    break;
+            }
+            return ListaPrzedmiotow;
+        }
+
         public void AddPrzedmiot(Przedmioty p)
         {
             SprzedaneEntities dc = new SprzedaneEntities();

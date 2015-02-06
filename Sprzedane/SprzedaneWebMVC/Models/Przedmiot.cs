@@ -25,7 +25,6 @@ namespace SprzedaneWebMVC.Models
         [Required]
         [Display(Name= "Data Zakonczenia")]
         [DataType(DataType.Date)]
-        [Range(System.Type.GetType("DateTime"), DateTime.Now.Date.ToString(), DateTime.MaxValue.Date.ToString())]
         public DateTime DataZakonczenia { get; set; }
         [Required]
         [Display(Name= "Wystawiajacy")]

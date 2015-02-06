@@ -16,11 +16,17 @@ namespace Sprzedane
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{id}")]
         IList<Przedmioty> GetPrzedmiot(string id);
 
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty")]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/1")]
         IList<Przedmioty> GetAllPrzedmioty();
 
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{term}/{by}")]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{term}/{by}/1")]
         IList<Przedmioty> GetPrzedmiotyBy(string term, string by);
+
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/2")]
+        IList<Przedmioty> GetAllPrzedmioty2();
+
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "przedmioty/{term}/{by}/2")]
+        IList<Przedmioty> GetPrzedmiotyBy2(string term, string by);
 
         [WebInvoke(ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
             Method = "POST", UriTemplate = "przedmioty/add")]
